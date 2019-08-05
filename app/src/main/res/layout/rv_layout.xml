@@ -14,13 +14,13 @@
         android:layout_margin="5dp">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -31,17 +31,17 @@
                     android:layout_marginTop="16dp"
                     app:srcCompat="@drawable/googleg_standard_color_18"
                     tools:ignore="MissingConstraints" />
-        </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/tvTitle"
                     android:layout_width="248dp"
-                    android:layout_height="34dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="24dp"
@@ -52,8 +52,8 @@
 
                 <TextView
                     android:id="@+id/tvDescription"
-                    android:layout_width="270dp"
-                    android:layout_height="34dp"
+                    android:layout_width="248dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="12dp"
@@ -64,13 +64,15 @@
                 <TextView
                     android:id="@+id/tvPrice"
                     android:layout_width="259dp"
-                    android:layout_height="31dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:textAlignment="viewEnd"
                     android:textColor="#E91E63"
+                    android:layout_marginBottom="10dp"
+                    android:padding="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.984"
                     app:layout_constraintStart_toEndOf="@+id/imageView2"

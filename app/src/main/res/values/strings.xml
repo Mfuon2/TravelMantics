@@ -3,5 +3,8 @@
     <string name="description_hint">Description Hint</string>
     <string name="price_hint">Price Hint</string>
     <string name="titlehint">TitleHint</string>
-    <string name="save_menu">save</string>
+    <string name="save_menu">Save Deal</string>
+    <string name="new_travel_deal">New Travel Deal</string>
+    <string name="delete_deal">Delete Deal</string>
+    <string name="logout">Logout</string>
 </resources>
