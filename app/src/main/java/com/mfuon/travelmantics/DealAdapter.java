@@ -2,10 +2,12 @@ package com.mfuon.travelmantics;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,14 +19,19 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mikhaellopez.circularimageview.CircularImageView;
+import com.squareup.picasso.Picasso;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder>{
     ArrayList<TravelDeal> deals;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ChildEventListener mChildsListener;
+    private CircularImageView imageDeal;
 
     public DealAdapter() {
        // FirebaseUtil.openFbReference("traveldeals",this);
@@ -92,13 +99,18 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvPrice = itemView.findViewById(R.id.tvPrice);
+            imageDeal = itemView.findViewById(R.id.imageView2);
             itemView.setOnClickListener(this);
         }
 
         public void bind(TravelDeal deal){
+            NumberFormat format = NumberFormat.getCurrencyInstance(Locale.US);
+            String currency = format.format(Double.parseDouble(deal.getPrice()));
+            System.out.println("Currency in US : " + currency);
             tvTitle.setText(deal.getTitle());
             tvDescription.setText(deal.getDescription());
-            tvPrice.setText(deal.getPrice());
+            tvPrice.setText( currency );
+            showImage(deal.getImageUrl());
         }
 
         @Override
@@ -110,6 +122,19 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
             intent.putExtra("Deal",selectedDeal);
             v.getContext().startActivity(intent);
         }
+
+        private void showImage(String url){
+            if(url != null && !url.isEmpty()){
+                url = FirebaseUtil.encodeValue(url);
+                Picasso.get()
+                        .load("https://firebasestorage.googleapis.com/v0/b/travelmatics-0.appspot.com/o/"+url+"?alt=media&token=8fe8e3d6-96e7-41cf-9dd8-89da30644416")
+                        .resize(200,200)
+                        .placeholder(R.drawable.loading)
+                        .centerCrop()
+                        .into(imageDeal);
+            }
+        }
     }
+
 
 }
