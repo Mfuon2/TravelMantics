@@ -146,15 +146,15 @@ public class DealActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.save_menu, menu);
-        if(FirebaseUtil.isAdmin){
+        /*if(FirebaseUtil.isAdmin){
             menu.findItem(R.id.delete_deal).setVisible(true);
             menu.findItem(R.id.save_menu).setVisible(true);
-            enableEditText(true);
+            //enableEditText(true);
         }else{
             menu.findItem(R.id.delete_deal).setVisible(false);
             menu.findItem(R.id.save_menu).setVisible(false);
             enableEditText(false);
-        }
+        }*/
 
         return true;
     }
